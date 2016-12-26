@@ -39,4 +39,12 @@ public class RealmDatabase {
 
         return items;
     }
+
+    public RealmResults<Repository> getResoBasedOnName(String name){
+        RealmResults<Repository> items = realm.where(Repository.class).equalTo("name", name).findAll();
+
+        return items;
+    }
+
+
 }

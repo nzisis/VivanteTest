@@ -1,5 +1,7 @@
 package com.nzisis.vivantetest.Activities;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import com.android.volley.Request;
@@ -33,6 +36,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+import io.realm.RealmResults;
+
 public class MainActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
@@ -42,6 +47,9 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayout llLoading;
     private RealmDatabase db;
     private String syesterday;
+
+    private AlertDialog dialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,12 +88,45 @@ public class MainActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+       AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
+        final EditText edittext = new EditText(MainActivity.this);
+        alert.setTitle("Search Repository");
+        alert.setView(edittext);
 
-        return super.onOptionsItemSelected(item);
+        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int which) {
+                String name = edittext.getText().toString();
+                RealmResults<Repository> results = db.getResoBasedOnName(name);
+                if(!results.isEmpty()){
+                    repositories = new ArrayList<Repository>();
+                    for(int i=0; i<results.size(); i++){
+                        repositories.add(results.get(i));
+                    }
+                    adapter.notify(repositories);
+                }
+
+                dialogInterface.dismiss();
+                dialog.dismiss();
+            }
+        });
+
+        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int which) {
+                dialogInterface.dismiss();
+                dialog.dismiss();
+            }
+        });
+
+       switch (id){
+           case R.id.action_Search:
+               dialog = alert.create();
+               dialog.show();
+               break;
+       }
+
+        return false;
     }
 
 
