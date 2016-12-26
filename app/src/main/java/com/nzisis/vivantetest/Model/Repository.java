@@ -17,6 +17,10 @@ public class Repository extends RealmObject {
     @PrimaryKey
     private int id;
 
+    public Repository(){
+
+    }
+
     public Repository(String name,String avatarURL,String description,int forks , String language){
         this.name = name;
         this.avatarURL = avatarURL;

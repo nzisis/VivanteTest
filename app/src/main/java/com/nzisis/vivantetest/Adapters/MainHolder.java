@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.nzisis.vivantetest.Listeners.MainListener;
 import com.nzisis.vivantetest.R;
 import com.squareup.picasso.Picasso;
 
@@ -21,11 +22,16 @@ public class MainHolder  extends RecyclerView.ViewHolder {
     public TextView tvRepositoryName;
 
 
-
-    public MainHolder(View itemView) {
+    public MainHolder(View itemView, final MainListener listener) {
         super(itemView);
 
         tvRepositoryName = (TextView) itemView.findViewById(R.id.tvRepositoryName);
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onClick(getAdapterPosition());
+            }
+        });
 
     }
 }

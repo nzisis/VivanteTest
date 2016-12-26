@@ -3,6 +3,7 @@ package com.nzisis.vivantetest.Model;
 import android.content.Context;
 
 import io.realm.Realm;
+import io.realm.RealmResults;
 
 /**
  * Created by nzisis on 26/12/16.
@@ -31,5 +32,11 @@ public class RealmDatabase {
 
 
         return realm.where(Repository.class).max("id").intValue() + 1;
+    }
+
+    public RealmResults<Repository> getResoBasedOnID(int id){
+        RealmResults<Repository> items = realm.where(Repository.class).equalTo("id",id).findAll();
+
+        return items;
     }
 }

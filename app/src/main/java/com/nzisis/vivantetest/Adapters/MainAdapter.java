@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.nzisis.vivantetest.Listeners.MainListener;
 import com.nzisis.vivantetest.Model.Repository;
 import com.nzisis.vivantetest.R;
 import com.squareup.picasso.Picasso;
@@ -19,10 +20,12 @@ public class MainAdapter extends RecyclerView.Adapter<MainHolder> {
 
     private ArrayList<Repository> repositories;
     private Context context;
+    private MainListener listener;
 
-    public MainAdapter(ArrayList<Repository> items, Context context) {
+    public MainAdapter(ArrayList<Repository> items, Context context,MainListener listener) {
         this.repositories = items;
         this.context = context;
+        this.listener = listener;
     }
 
     @Override
@@ -30,7 +33,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainHolder> {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.main_item, parent, false);
 
-        return new MainHolder(view);
+        return new MainHolder(view,listener);
     }
 
     @Override

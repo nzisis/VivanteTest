@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:background="@color/deep_green"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:id="@+id/tvName"
+        android:text="Mhstos"
+        android:textSize="22sp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        />
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/ivAvatar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:scaleType="fitXY"
+        android:layout_centerHorizontal="true"
+        app:riv_corner_radius="50dip"
+        app:riv_mutate_background="true"
+        app:riv_oval="true"
+        app:riv_tile_mode="clamp"
+        android:layout_below="@+id/tvName"
+        android:layout_margin="20dp"
+        />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvDesHeader"
+        android:text="Repository Description"
+        android:textSize="22sp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:layout_below="@+id/ivAvatar"
+        />
+
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/tvDesHeader"
+        android:background="@color/white"
+        android:layout_marginTop="5dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvDes"
+        android:text="Repository Description"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:layout_below="@+id/line"
+        android:layout_marginTop="10dp"
+        />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvForksHeader"
+        android:text="Number of forks"
+        android:textSize="22sp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:layout_below="@+id/tvDes"
+        android:layout_marginTop="30dp"
+        />
+
+
+    <View
+        android:id="@+id/line1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/tvForksHeader"
+        android:background="@color/white"
+        android:layout_marginTop="5dp"
+        />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvForks"
+        android:text="5"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:layout_below="@+id/tvForksHeader"
+        android:layout_marginTop="10dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvLanguageheader"
+        android:text="Language"
+        android:textSize="22sp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:layout_below="@+id/tvForks"
+        android:layout_marginTop="30dp"
+        />
+
+
+    <View
+        android:id="@+id/line2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/tvLanguageheader"
+        android:background="@color/white"
+        android:layout_marginTop="5dp"
+        />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvLanguage"
+        android:text="Python"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:layout_below="@+id/line2"
+        android:layout_marginTop="10dp"
+        />
+
+
+
+
+</RelativeLayout>
