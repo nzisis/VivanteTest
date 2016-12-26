@@ -35,18 +35,10 @@ public class MainAdapter extends RecyclerView.Adapter<MainHolder> {
 
     @Override
     public void onBindViewHolder(MainHolder holder, int position) {
-//        LeaderBoardItem item = items.get(position);
-//
-//        holder.tvName.setText(item.getName());
-//        holder.tvPoints.setText(item.getPoints() + "");
-//        holder.tvRank.setText(item.getRank() + "");
-//
-//
-//        Picasso.with(context).load(item.getAvatar_url()).into(holder.ivAvatar);
-//
-//        if(item.getStar().equals("/assets/images/bronze_star.png")) holder.ivStar.setImageResource(R.mipmap.bronze);
-//        else if(item.getStar().equals("/assets/images/silver_star.png")) holder.ivStar.setImageResource(R.mipmap.silver);
-//        else if(item.getStar().equals("/assets/images/gold_star.png")) holder.ivStar.setImageResource(R.mipmap.gold);
+
+        Repository item  = repositories.get(position);
+
+        holder.tvRepositoryName.setText(item.getName());
 
 
     }

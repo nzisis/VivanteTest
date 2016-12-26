@@ -1,0 +1,35 @@
+package com.nzisis.vivantetest.Model;
+
+import android.content.Context;
+
+import io.realm.Realm;
+
+/**
+ * Created by nzisis on 26/12/16.
+ */
+public class RealmDatabase {
+    private Realm realm;
+
+
+    public RealmDatabase(Context context) {
+        Realm.init(context);
+        realm = Realm.getDefaultInstance();
+    }
+
+
+    public void insertRepository(final Repository repository) {
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                realm.insert(repository);
+            }
+        });
+    }
+
+    public int getRepositoryNextKey() {
+        if (realm.where(Repository.class).findAll().isEmpty()) return 1;
+
+
+        return realm.where(Repository.class).max("id").intValue() + 1;
+    }
+}
